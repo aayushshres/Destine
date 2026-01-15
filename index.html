@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destiné - Where Love is Fated</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Outfit:wght@300;400;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="landing-container">
+        <div class="stars"></div>
+        <div class="twinkling"></div>
+        <div class="moon"></div>
+
+        <!-- Mystical Background Elements -->
+        <div class="mystical-decor">
+            <div class="nebula"></div>
+            <div class="float-item item-1">🔮</div>
+            <div class="float-item item-2">🌌</div>
+            <div class="float-item item-3">✨</div>
+            <div class="float-item item-4">🪐</div>
+            <div class="float-item item-5">🌙</div>
+            <div class="float-item item-6">✨</div>
+            <div class="float-item item-">✨</div>
+
+        </div>
+
+        <!-- Hidden Constellations Layer (Revealed by Cursor) -->
+        <div id="constellationLayer" class="constellation-layer">
+            <!-- Big Dipper -->
+            <svg class="constellation" width="300" height="200" viewBox="0 0 300 200" style="top: 10%; left: 10%;">
+                <circle cx="20" cy="80" r="2" fill="white" />
+                <circle cx="60" cy="70" r="2" fill="white" />
+                <circle cx="90" cy="90" r="2" fill="white" />
+                <circle cx="110" cy="110" r="2" fill="white" />
+                <circle cx="150" cy="120" r="2" fill="white" />
+                <circle cx="200" cy="100" r="2" fill="white" />
+                <circle cx="240" cy="40" r="2" fill="white" /> <!-- Dubhe -->
+                <path d="M20,80 L60,70 L90,90 L110,110 L150,120 L200,100 L240,40" stroke="white" stroke-width="1"
+                    stroke-opacity="0.5" fill="none" />
+            </svg>
+
+            <!-- Cassiopeia -->
+            <svg class="constellation" width="200" height="150" viewBox="0 0 200 150" style="top: 15%; right: 20%;">
+                <circle cx="20" cy="100" r="2" fill="white" />
+                <circle cx="60" cy="50" r="2" fill="white" />
+                <circle cx="100" cy="80" r="2" fill="white" />
+                <circle cx="140" cy="40" r="2" fill="white" />
+                <circle cx="180" cy="90" r="2" fill="white" />
+                <path d="M20,100 L60,50 L100,80 L140,40 L180,90" stroke="white" stroke-width="1" stroke-opacity="0.5"
+                    fill="none" />
+            </svg>
+
+            <!-- Orion (simplified) -->
+            <svg class="constellation" width="200" height="300" viewBox="0 0 200 300" style="bottom: 20%; left: 15%;">
+                <circle cx="50" cy="20" r="2" fill="white" /> <!-- Betelgeuse -->
+                <circle cx="150" cy="40" r="2" fill="white" /> <!-- Bellatrix -->
+                <circle cx="80" cy="140" r="2" fill="white" /> <!-- Belt 1 -->
+                <circle cx="100" cy="135" r="2" fill="white" /> <!-- Belt 2 -->
+                <circle cx="120" cy="130" r="2" fill="white" /> <!-- Belt 3 -->
+                <circle cx="40" cy="250" r="2" fill="white" /> <!-- Saiph -->
+                <circle cx="160" cy="240" r="2" fill="white" /> <!-- Rigel -->
+                <path d="M50,20 L100,135 M150,40 L100,135 M40,250 L80,140 M160,240 L120,130 M80,140 L120,130"
+                    stroke="white" stroke-width="1" stroke-opacity="0.5" fill="none" />
+            </svg>
+        </div>
+
+        <nav>
+            <div class="logo" id="navLogo" style="cursor: pointer;">Destiné</div>
+            <div class="nav-links">
+                <button id="navMatches" class="nav-btn">Matches</button>
+            </div>
+        </nav>
+
+        <header id="heroSection" class="hero-section">
+            <h1 class="fade-in">Destiné</h1>
+            <p class="tagline fade-in-delay">Where love is fated</p>
+            <p class="description fade-in-delay-2">
+                Discover matches written in the stars. Experience a dating connection that goes beyond the surface.
+            </p>
+            <button id="getStartedBtn" class="primary-button fade-in-delay-3">Get Started</button>
+            <p class="romantic-tagline fade-in-delay-4">Call it math or fate—whatever it takes to meet your soulmate.
+            </p>
+        </header>
+
+        <section id="signupSection" class="signup-section hidden">
+            <h2 class="fade-in">Begin your Journey</h2>
+            <form id="signupForm" class="fade-in-delay">
+                <div class="form-group">
+                    <label for="userName">Name</label>
+                    <input type="text" id="userName" placeholder="What should we call you?" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="birthDate">Birth Date</label>
+                    <input type="date" id="birthDate" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="birthTime">Birth Time</label>
+                    <input type="time" id="birthTime" required>
+                </div>
+
+                <div class="form-group-row">
+                    <div class="form-group">
+                        <label for="birthCity">Birth City</label>
+                        <input type="text" id="birthCity" placeholder="City" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="birthCountry">Country</label>
+                        <input type="text" id="birthCountry" placeholder="Country" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="cta-button">Reveal My Destiny</button>
+            </form>
+        </section>
+
+        <section id="profileSection" class="profile-section hidden">
+            <div class="profile-card fade-in">
+                <div class="profile-header">
+                    <h2 id="profileName">User Name</h2>
+                    <p id="profileSign" class="profile-sign">Zodiac Sign</p>
+                </div>
+
+                <div class="profile-content">
+                    <div class="insight-box">
+                        <h3>Birth Chart Summary</h3>
+                        <p id="chartSummary">Analyzing celestial positions...</p>
+                    </div>
+
+                    <div class="insight-box">
+                        <h3>Cosmic Vibe</h3>
+                        <p id="cosmicVibe">Reading energy...</p>
+                    </div>
+                </div>
+
+                <button id="startMatchingBtn" class="cta-button">Find Matches</button>
+            </div>
+        </section>
+
+        <!-- Matches Section -->
+        <section id="matchesSection" class="matches-section hidden">
+            <div class="glass-card matches-card">
+                <h2>Fated Connections</h2>
+                <div id="matchesList" class="matches-list">
+                    <!-- Matches will be injected here -->
+                    <p class="no-matches">The stars haven't aligned for a match just yet...</p>
+                </div>
+                <button id="backToSwiping" class="secondary-button">Back to Stars</button>
+            </div>
+        </section>
+
+        <!-- Hidden container for the future app interface -->
+        <main id="appInterface" class="hidden">
+            <div class="match-container fade-in">
+                <div class="card-stack" id="cardStack">
+                    <!-- Cards will be injected here via JS -->
+                    <div class="placeholder-card">
+                        <p>Finding celestial matches...</p>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="nopeBtn" class="action-btn nope" aria-label="Pass">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                    <button id="likeBtn" class="action-btn like" aria-label="Like">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                            <path
+                                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Match Profile Detail View (Hidden by default) -->
+    <div id="profileDetailOverlay" class="detail-overlay hidden">
+        <div class="detail-container">
+            <button id="closeDetail" class="close-btn">&times;</button>
+            <div class="detail-header">
+                <div class="detail-image" id="detailEmoji">🦁</div>
+                <h1 id="detailName">Atlas, 24</h1>
+                <p id="detailSignInfo">♌ Leo • Fire</p>
+            </div>
+            <div class="detail-body">
+                <div class="detail-vibe-box">
+                    <h3>Cosmic Vibe</h3>
+                    <p id="detailVibe">Radiant & Assertive</p>
+                </div>
+                <section class="detail-section">
+                    <h3>About</h3>
+                    <p id="detailBio">Biography goes here...</p>
+                </section>
+                <section class="detail-section">
+                    <h3>Hobbies</h3>
+                    <div class="detail-tags" id="detailHobbies">
+                        <!-- Tags injected here -->
+                    </div>
+                </section>
+                <section class="detail-section">
+                    <h3>Celestial Chart</h3>
+                    <p id="detailCelestial">Sun in Leo, Moon in Aries</p>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <div id="matchOverlay" class="match-overlay hidden">
+        <div class="match-content">
+            <h1>It's a Match!</h1>
+            <p> The stars have aligned.</p>
+            <button id="keepSwipingBtn" class="primary-button">Keep Swiping</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

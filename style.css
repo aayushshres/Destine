@@ -1,0 +1,1248 @@
+:root {
+    /* Mystical Purple Palette */
+    --bg-deep: #1b1145;
+    --bg-rich: #40227a;
+    --accent-mid: #8947c3;
+    --accent-soft: #bb96dc;
+
+    /* Functional Colors */
+    --text-primary: #ffffff;
+    --text-secondary: #e0d4f5;
+    --glass-bg: rgba(27, 17, 69, 0.4);
+    --glass-border: rgba(187, 150, 220, 0.2);
+    --input-bg: rgba(64, 34, 122, 0.3);
+
+    --font-heading: 'Cinzel', serif;
+    --font-body: 'Outfit', sans-serif;
+    --accent-gold: #D4AF37;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: radial-gradient(ellipse at bottom, var(--bg-rich) 0%, var(--bg-deep) 100%);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* --- Celestial Background --- */
+
+/* CSS Stars */
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: transparent;
+    z-index: -2;
+}
+
+/* Generate stars using box-shadow (efficient way to do many stars) */
+.stars::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: transparent;
+    /* Small, medium, and large stars scattered */
+    box-shadow:
+        10vw 10vh 1px 0px white,
+        20vw 50vh 1px 0px var(--accent-soft),
+        30vw 20vh 2px 0px white,
+        40vw 80vh 1px 0px white,
+        60vw 30vh 2px 0px var(--accent-mid),
+        70vw 90vh 1px 0px white,
+        80vw 10vh 2px 0px white,
+        90vw 50vh 1px 0px var(--accent-soft),
+        10vw 90vh 2px 0px white,
+        35vw 45vh 1px 0px white,
+        55vw 65vh 1px 0px var(--accent-soft),
+        75vw 25vh 2px 0px white,
+        85vw 85vh 1px 0px var(--accent-mid);
+    opacity: 0.6;
+    animation: twinkle 5s infinite alternate;
+}
+
+/* Twinkling Animation */
+@keyframes twinkle {
+    0% {
+        transform: translateY(0);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translateY(-20px);
+        opacity: 0.8;
+    }
+}
+
+/* Soft Fog/Cloud Overlay for "Soft" feel */
+.twinkling {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: radial-gradient(circle at 50% 50%, rgba(137, 71, 195, 0.1), transparent 70%);
+    pointer-events: none;
+}
+
+/* Moon */
+.moon {
+    position: absolute;
+    top: 10%;
+    right: 15%;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle at 35% 35%, #fff, var(--accent-soft) 40%, var(--bg-rich) 90%);
+    border-radius: 50%;
+    box-shadow:
+        0 0 30px 5px rgba(187, 150, 220, 0.4),
+        0 0 80px 20px rgba(137, 71, 195, 0.2);
+    opacity: 0.9;
+    z-index: -1;
+    transition: all 1s ease;
+}
+
+/* --- Layout --- */
+
+.landing-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 0 1rem;
+}
+
+nav {
+    padding: 2rem 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    letter-spacing: 4px;
+    color: var(--accent-soft);
+    text-shadow: 0 0 10px rgba(187, 150, 220, 0.5);
+}
+
+.hero-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.signup-section,
+.profile-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    width: 100%;
+}
+
+.signup-section h2 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    /* Reduced size */
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    letter-spacing: 2px;
+    color: white;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    opacity: 0.9;
+}
+
+/* --- Typography & Elements --- */
+
+h1 {
+    font-family: var(--font-heading);
+    font-size: 4.5rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+    background: linear-gradient(to right, #fff, var(--accent-soft));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+    filter: drop-shadow(0 0 15px rgba(137, 71, 195, 0.5));
+}
+
+.tagline {
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin-bottom: 2rem;
+    color: var(--accent-soft);
+    text-transform: uppercase;
+}
+
+.description {
+    max-width: 500px;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+}
+
+/* Romantic Tagline Below Button */
+.romantic-tagline {
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--accent-soft);
+    max-width: 400px;
+    letter-spacing: 0.3px;
+    position: relative;
+    padding: 0 2rem;
+    font-style: italic;
+    text-shadow: 0 2px 8px rgba(187, 150, 220, 0.4);
+}
+
+.romantic-tagline::before,
+.romantic-tagline::after {
+    content: '♡';
+    position: absolute;
+    font-size: 0.8rem;
+    color: var(--accent-mid);
+    opacity: 0.7;
+    animation: floatingHeart 3s ease-in-out infinite;
+}
+
+.romantic-tagline::before {
+    left: 0;
+    animation-delay: 0s;
+}
+
+.romantic-tagline::after {
+    right: 0;
+    animation-delay: 1.5s;
+}
+
+@keyframes floatingHeart {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: translateY(-8px) scale(1.1);
+        opacity: 0.9;
+    }
+}
+
+/* Primary Button - Soft Pill Shape */
+.primary-button {
+    padding: 1.2rem 3.5rem;
+    font-size: 1.1rem;
+    font-family: var(--font-body);
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    background: linear-gradient(135deg, var(--accent-mid) 0%, var(--accent-soft) 100%);
+    color: var(--bg-deep);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 8px 30px rgba(137, 71, 195, 0.5), 0 2px 10px rgba(187, 150, 220, 0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.primary-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.primary-button:hover::before {
+    left: 100%;
+}
+
+.primary-button:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(137, 71, 195, 0.7), 0 4px 15px rgba(187, 150, 220, 0.5);
+}
+
+/* --- Forms & Glassmorphism --- */
+
+form {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    padding: 3rem;
+    border-radius: 2rem;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.form-group-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-group-row .form-group {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--accent-soft);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+    background-color: var(--input-bg);
+    color: white;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s;
+}
+
+input:focus {
+    border-color: var(--accent-mid);
+    box-shadow: 0 0 15px rgba(137, 71, 195, 0.2);
+    background-color: rgba(64, 34, 122, 0.5);
+}
+
+.cta-button {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, var(--accent-soft), var(--accent-mid));
+    border: none;
+    border-radius: 12px;
+    font-family: var(--font-body);
+    /* Modern font for button */
+    font-weight: 600;
+    color: var(--bg-deep);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(187, 150, 220, 0.4);
+}
+
+/* --- Profile Card --- */
+
+.profile-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(212, 165, 165, 0.25);
+    padding: 3rem;
+    border-radius: 2rem;
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), 0 2px 10px rgba(187, 150, 220, 0.15);
+}
+
+.profile-name {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.profile-sign {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--accent-soft);
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.insight-box {
+    background: rgba(27, 17, 69, 0.5);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+    text-align: left;
+    border: 1px solid rgba(212, 165, 165, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 15px rgba(137, 71, 195, 0.15);
+}
+
+.insight-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(187, 150, 220, 0.25);
+}
+
+.insight-box h3 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #F4C2C2;
+    margin-bottom: 0.8rem;
+    text-shadow: 0 0 10px rgba(244, 194, 194, 0.5);
+}
+
+.insight-box p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+/* --- Utilities --- */
+.hidden {
+    display: none !important;
+}
+
+/* Animations */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.fade-in-delay {
+    opacity: 0;
+    animation: fadeIn 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+}
+
+.fade-in-delay-2 {
+    opacity: 0;
+    animation: fadeIn 1s cubic-bezier(0.4, 0, 0.2, 1) 0.6s forwards;
+}
+
+.fade-in-delay-3 {
+    opacity: 0;
+    animation: fadeIn 1s cubic-bezier(0.4, 0, 0.2, 1) 0.9s forwards;
+}
+
+.fade-in-delay-4 {
+    opacity: 0;
+    animation: fadeIn 1s cubic-bezier(0.4, 0, 0.2, 1) 1.2s forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 3rem;
+    }
+
+    .moon {
+        width: 60px;
+        height: 60px;
+        top: 5%;
+        right: 5%;
+    }
+
+    .profile-card,
+    form {
+        padding: 2rem;
+    }
+}
+
+/* --- Matching Interface --- */
+
+.match-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    position: relative;
+    padding-bottom: 2rem;
+}
+
+.card-stack {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    margin-bottom: 2rem;
+}
+
+.swipe-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(30, 20, 70, 0.85);
+    /* Reduced transparency */
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    /* Determine stacking context */
+    transform-origin: 50% 100%;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Element Themes */
+.swipe-card.fire {
+    border-color: rgba(255, 107, 107, 0.4);
+    box-shadow: 0 10px 30px rgba(255, 107, 107, 0.15);
+}
+
+.swipe-card.water {
+    border-color: rgba(78, 205, 196, 0.4);
+    box-shadow: 0 10px 30px rgba(78, 205, 196, 0.15);
+}
+
+.swipe-card.air {
+    border-color: rgba(162, 155, 254, 0.4);
+    box-shadow: 0 10px 30px rgba(162, 155, 254, 0.15);
+}
+
+.swipe-card.earth {
+    border-color: rgba(85, 239, 196, 0.4);
+    box-shadow: 0 10px 30px rgba(85, 239, 196, 0.15);
+}
+
+/* Placeholder Card */
+.placeholder-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+    color: white;
+    padding: 2rem;
+}
+
+.placeholder-card h2 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--accent-light);
+}
+
+.card-image {
+    flex: 2;
+    background: linear-gradient(to bottom, #2a1b5e, #1b1145);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.card-image span {
+    font-size: 5rem;
+}
+
+.card-content {
+    flex: 1;
+    padding: 1.5rem;
+    color: white;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-content h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent-soft);
+}
+
+.card-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.zodiac-tag {
+    background: rgba(137, 71, 195, 0.3);
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent-lavender);
+}
+
+.match-score {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    color: var(--accent-gold);
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 2rem;
+    z-index: 10;
+}
+
+.action-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+}
+
+.action-btn:hover {
+    transform: scale(1.1);
+}
+
+.action-btn.nope {
+    color: #ff6b6b;
+    border: 2px solid #ff6b6b;
+    box-shadow: 0 0 15px rgba(255, 107, 107, 0.2);
+}
+
+.action-btn.like {
+    color: #4ecdc4;
+    border: 2px solid #4ecdc4;
+    box-shadow: 0 0 15px rgba(78, 205, 196, 0.2);
+}
+
+/* Swipe Animations */
+.swipe-left {
+    transform: translateX(-150%) rotate(-30deg) !important;
+    opacity: 0;
+}
+
+.swipe-right {
+    transform: translateX(150%) rotate(30deg) !important;
+    opacity: 0;
+}
+
+/* Match Overlay */
+.match-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(27, 17, 69, 0.9);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.match-content {
+    text-align: center;
+    transform: scale(0.8);
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.match-content h1 {
+    font-size: 4rem;
+    font-family: var(--font-heading);
+    background: linear-gradient(to right, #ff9a9e, #fad0c4, #fad0c4, #a18cd1);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+    filter: drop-shadow(0 0 15px rgba(255, 154, 158, 0.6)) drop-shadow(0 0 30px rgba(161, 140, 209, 0.4));
+    animation: gradientShift 3s ease infinite;
+}
+
+.match-content p {
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+    letter-spacing: 1px;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes popIn {
+    to {
+        transform: scale(1);
+    }
+}
+
+/* Planetary Stats Box */
+.val-box {
+    display: flex;
+    justify-content: space-around;
+    background: rgba(64, 34, 122, 0.4);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    border: 1px solid var(--glass-border);
+}
+
+.planet-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.planet-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.2rem;
+}
+
+.planet-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent-lavender);
+    opacity: 0.8;
+}
+
+.planet-value {
+    font-size: 0.9rem;
+    color: white;
+    font-weight: 600;
+}
+
+.sign-logo {
+    display: inline-block;
+    margin-right: 0.5rem;
+    filter: drop-shadow(0 0 5px var(--accent-mid));
+}
+
+/* --- Mystical & Magical Decor --- */
+
+.mystical-decor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+/* Nebula Clouds */
+.nebula {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(137, 71, 195, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(78, 205, 196, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(255, 107, 107, 0.1) 0%, transparent 60%);
+    filter: blur(30px);
+    animation: nebulaPulse 10s ease-in-out infinite alternate;
+}
+
+@keyframes nebulaPulse {
+    0% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0.8;
+        transform: scale(1.1);
+    }
+}
+
+/* Floating Elements (Emojis) */
+.float-item {
+    position: absolute;
+    font-size: 2rem;
+    opacity: 0.6;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+    animation: floatAround 20s linear infinite;
+}
+
+/* Specific Positions & Delays */
+.item-1 {
+    top: 15%;
+    left: 10%;
+    font-size: 3rem;
+    animation-duration: 25s;
+}
+
+/* Crystal Ball */
+.item-2 {
+    top: 60%;
+    right: 15%;
+    font-size: 4rem;
+    animation-duration: 30s;
+    animation-delay: -5s;
+}
+
+/* Milky Way */
+.item-3 {
+    top: 25%;
+    right: 25%;
+    font-size: 1.5rem;
+    animation-duration: 15s;
+    animation-delay: -2s;
+}
+
+/* Sparkle */
+.item-4 {
+    bottom: 20%;
+    left: 20%;
+    font-size: 3.5rem;
+    animation-duration: 35s;
+    animation-delay: -10s;
+}
+
+/* Planet */
+.item-5 {
+    top: 5%;
+    right: 5%;
+    font-size: 2rem;
+    opacity: 0.4;
+}
+
+/* Moon Emoji (decorative) */
+.item-6 {
+    bottom: 10%;
+    right: 40%;
+    font-size: 1.2rem;
+    animation-duration: 12s;
+}
+
+/* Sparkle */
+
+/* Floating Animation */
+@keyframes floatAround {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    25% {
+        transform: translate(20px, -30px) rotate(10deg);
+    }
+
+    50% {
+        transform: translate(-10px, 10px) rotate(-5deg);
+    }
+
+    75% {
+        transform: translate(-30px, -10px) rotate(5deg);
+    }
+
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+}
+
+/* Constellation Effect (Simulated via Lines) */
+.mystical-decor::before {
+    content: "";
+    position: absolute;
+    top: 30%;
+    left: 70%;
+    width: 200px;
+    height: 200px;
+    background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: radial-gradient(circle, black 30%, transparent 70%);
+    -webkit-mask-image: radial-gradient(circle, black 30%, transparent 70%);
+    transform: rotate(45deg);
+    opacity: 0.3;
+}
+
+/* --- Hidden Constellation Layer --- */
+.constellation-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    /* Hidden by default */
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    /* Mask for flash light effect */
+    mask-image: radial-gradient(circle 150px at var(--cursor-x, 50%) var(--cursor-y, 50%), black 0%, transparent 100%);
+    -webkit-mask-image: radial-gradient(circle 150px at var(--cursor-x, 50%) var(--cursor-y, 50%), black 0%, transparent 100%);
+}
+
+/* When active (via JS), make layer visible but constrained by mask */
+.constellation-layer.active {
+    opacity: 1;
+}
+
+.constellation {
+    position: absolute;
+    opacity: 0.8;
+    filter: drop-shadow(0 0 5px white);
+}
+
+/* Magic Dust Trail */
+.magic-particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: fadeAndFloat 1s linear forwards;
+    box-shadow: 0 0 5px var(--accent-soft);
+}
+
+@keyframes fadeAndFloat {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(var(--tx), var(--ty)) scale(0);
+    }
+}
+
+/* --- Detail Overlay Styles --- */
+.detail-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(27, 17, 69, 0.95);
+    backdrop-filter: blur(15px);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.detail-container {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 2rem;
+    width: 100%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    padding: 3rem 2rem;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-mid) transparent;
+}
+
+.close-btn {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2.5rem;
+    cursor: pointer;
+    line-height: 1;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.close-btn:hover {
+    opacity: 1;
+}
+
+.detail-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.detail-image {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+}
+
+.detail-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(to right, #fff, var(--accent-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#detailSignInfo {
+    color: var(--accent-soft);
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.detail-vibe-box {
+    background: rgba(137, 71, 195, 0.2);
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+    border: 1px solid var(--glass-border);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.detail-section {
+    margin-bottom: 2rem;
+}
+
+.detail-section h3 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent-mid);
+    margin-bottom: 1rem;
+}
+
+.detail-section p {
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+.detail-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.detail-tags span {
+    background: var(--input-bg);
+    border: 1px solid var(--glass-border);
+    padding: 0.5rem 1.2rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+}
+
+/* Card Vibe Styling */
+.card-vibe {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-bottom: 0.8rem;
+    opacity: 0.8;
+}
+
+/* --- Navigation & Matches --- */
+.nav-links {
+    position: absolute;
+    right: 4rem;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-btn {
+    background: rgba(137, 71, 195, 0.2);
+    border: 1px solid var(--glass-border);
+    color: white;
+    padding: 0.5rem 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.nav-btn:hover {
+    background: var(--accent-mid);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(137, 71, 195, 0.4);
+}
+
+.matches-section {
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 80vh;
+}
+
+.matches-card {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.matches-list {
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.match-item {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 1px solid var(--glass-border);
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+.match-item:hover {
+    transform: scale(1.02);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.match-avatar {
+    font-size: 2rem;
+    margin-right: 1.5rem;
+}
+
+.match-info {
+    text-align: left;
+    flex-grow: 1;
+}
+
+.match-info h4 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+}
+
+.match-info p {
+    margin: 0.2rem 0 0;
+    font-size: 0.85rem;
+    color: var(--accent-light);
+}
+
+.no-matches {
+    color: var(--text-secondary);
+    font-style: italic;
+    opacity: 0.7;
+    margin-top: 3rem;
+}
+
+.secondary-button {
+    background: none;
+    border: 1px solid var(--accent-mid);
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.secondary-button:hover {
+    background: rgba(137, 71, 195, 0.1);
+    border-color: var(--accent-light);
+}
+
+/* Specialized Typography for Profile Insights */
+#chartSummary {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.8px;
+    line-height: 1.7;
+    color: #ffffff;
+    text-shadow: 0 0 15px rgba(244, 194, 194, 0.8), 0 0 25px rgba(212, 165, 165, 0.5), 0 2px 4px rgba(0, 0, 0, 0.3);
+    animation: subtleGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes subtleGlow {
+    0% {
+        text-shadow: 0 0 15px rgba(244, 194, 194, 0.8), 0 0 25px rgba(212, 165, 165, 0.5), 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    100% {
+        text-shadow: 0 0 20px rgba(244, 194, 194, 1), 0 0 35px rgba(212, 165, 165, 0.7), 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+}
+
+#cosmicVibe {
+    font-style: italic;
+    /* Magic/Dreamy feel */
+    font-weight: 300;
+    color: var(--accent-soft);
+    position: relative;
+    padding-left: 1rem;
+    border-left: 2px solid var(--accent-mid);
+}
